@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of a Systems Engineering student — interactive dashboard showcasing projects, skills, and systems thinking." />
+  <meta name="theme-color" content="#0a0e17" />
+
+  <title>Anton | Systems Engineer</title>
+
+  <!-- Google Fonts — Inter for UI, JetBrains Mono for code aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets — separated for maintainability -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       CUSTOM CURSOR  (desktop only)
+       ═══════════════════════════════════════════ -->
+  <div id="cursor-dot" class="custom-cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" class="custom-cursor" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       SCROLL PROGRESS BAR
+       ═══════════════════════════════════════════ -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       LOADER SCREEN
+       ═══════════════════════════════════════════ -->
+  <div id="loader" aria-label="Loading">
+    <div class="loader-content">
+      <svg class="loader-logo" viewBox="0 0 100 100" width="80" height="80">
+        <circle cx="50" cy="50" r="45" stroke="var(--accent)" stroke-width="2" fill="none" stroke-dasharray="283" stroke-dashoffset="283" class="loader-circle" />
+        <text x="50" y="56" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono" font-size="18">SYS</text>
+      </svg>
+      <p class="loader-text">Initializing Systems…</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ -->
+  <header id="navbar" class="navbar">
+    <nav class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span>Anton<span class="logo-slash"> /</span><span class="logo-bracket">&gt;</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#system-viz" class="nav-link" data-section="system-viz">Systems</a></li>
+        <li><a href="#timeline" class="nav-link" data-section="timeline">Journey</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       HERO SECTION — Canvas background + typing
+       ═══════════════════════════════════════════ -->
+  <section id="hero" class="hero">
+    <!-- Canvas renders animated blueprint grid & particles -->
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-content">
+      <p class="hero-greeting mono">// welcome_to_my_system</p>
+
+      <h1 class="hero-title">
+        <span class="line">I'm <span class="highlight">Anton</span>,</span>
+        <span class="line">a <span id="typed-text" class="typed highlight"></span><span class="cursor-blink">|</span></span>
+      </h1>
+
+      <p class="hero-subtitle">
+        2nd-Year <span class="highlight">Systems Engineering</span> Student<br />
+        Building the architecture of tomorrow's solutions.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          <span class="btn-text">View Projects</span>
+          <span class="btn-icon">→</span>
+        </a>
+        <a href="#" class="btn btn-secondary" id="download-cv">
+          <span class="btn-text">Download CV</span>
+          <span class="btn-icon">↓</span>
+        </a>
+      </div>
+
+      <!-- Status indicators — dashboard aesthetic -->
+      <div class="hero-status">
+        <div class="status-item">
+          <span class="status-dot online"></span>
+          <span class="mono">Status: Available</span>
+        </div>
+        <div class="status-item">
+          <span class="status-dot online"></span>
+          <span class="mono">Location: Earth</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span class="mono">scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT SECTION
+       ═══════════════════════════════════════════ -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag mono">// 01. about_me</span>
+        <h2 class="section-title">System <span class="highlight">Overview</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <!-- Bio card -->
+        <div class="about-bio reveal-left">
+          <div class="glass-card">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title mono">about.sys</span>
+            </div>
+            <div class="terminal-body">
+              <p>
+                I'm a 2nd-year <strong>Systems Engineering</strong> student passionate about
+                understanding how complex systems work and designing elegant solutions.
+              </p>
+              <p>
+                My approach combines <strong>analytical thinking</strong> with
+                <strong>creative problem-solving</strong>. I believe every system — software,
+                hardware, or organizational — can be optimized through clear architecture
+                and thoughtful design.
+              </p>
+              <p>
+                When I'm not studying control systems or writing code, I'm exploring
+                new technologies, contributing to open-source, or sketching system diagrams
+                on whiteboards.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="about-skills reveal-right">
+          <h3 class="skills-heading">Core Modules</h3>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar" data-skill="HTML / CSS" data-level="90">
+              <div class="skill-info">
+                <span class="skill-name">HTML / CSS</span>
+                <span class="skill-percent mono">90%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-tooltip="Semantic markup, responsive design, CSS Grid/Flexbox, animations"></div>
+              </div>
+            </div>
+
+            <div class="skill-bar" data-skill="JavaScript" data-level="80">
+              <div class="skill-info">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percent mono">80%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-tooltip="ES6+, DOM manipulation, Canvas API, async patterns"></div>
+              </div>
+            </div>
+
+            <div class="skill-bar" data-skill="Python" data-level="75">
+              <div class="skill-info">
+                <span class="skill-name">Python</span>
+                <span class="skill-percent mono">75%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-tooltip="Data analysis, scripting, algorithms, automation"></div>
+              </div>
+            </div>
+
+            <div class="skill-bar" data-skill="Algorithms" data-level="70">
+              <div class="skill-info">
+                <span class="skill-name">Algorithms &amp; DS</span>
+                <span class="skill-percent mono">70%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-tooltip="Sorting, searching, graphs, dynamic programming"></div>
+              </div>
+            </div>
+
+            <div class="skill-bar" data-skill="Systems Thinking" data-level="85">
+              <div class="skill-info">
+                <span class="skill-name">Systems Thinking</span>
+                <span class="skill-percent mono">85%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-tooltip="Modeling, feedback loops, optimization, architecture"></div>
+              </div>
+            </div>
+
+            <div class="skill-bar" data-skill="Problem Solving" data-level="88">
+              <div class="skill-info">
+                <span class="skill-name">Problem Solving</span>
+                <span class="skill-percent mono">88%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-tooltip="Analytical decomposition, root cause analysis, creative solutions"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System diagram — visual representation of skill relationships -->
+          <div class="system-diagram">
+            <h3 class="skills-heading">System Architecture</h3>
+            <div class="diagram-container" id="skill-diagram">
+              <!-- Rendered by JS — a mini node graph of skill connections -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJECTS SECTION
+       ═══════════════════════════════════════════ -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag mono">// 02. projects</span>
+        <h2 class="section-title">Built <span class="highlight">Systems</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project Card 1 -->
+        <article class="project-card reveal-up" data-project="1">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-header">
+              <span class="card-icon">⚙️</span>
+              <div class="card-links">
+                <a href="#" class="card-link" title="GitHub" aria-label="View source on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+                <a href="#" class="card-link" title="Live Demo" aria-label="View live demo">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="card-title">Smart Campus Navigator</h3>
+            <p class="card-desc">A pathfinding system using Dijkstra's algorithm to find optimal routes across campus buildings. Features real-time visualization of graph traversal.</p>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Algorithms</span>
+              <span class="tag">Graph Theory</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 -->
+        <article class="project-card reveal-up" data-project="2">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-header">
+              <span class="card-icon">📊</span>
+              <div class="card-links">
+                <a href="#" class="card-link" title="GitHub" aria-label="View source on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+                <a href="#" class="card-link" title="Live Demo" aria-label="View live demo">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="card-title">Data Pipeline Monitor</h3>
+            <p class="card-desc">A real-time dashboard monitoring data flow through a multi-stage processing pipeline with throughput analytics and bottleneck detection.</p>
+            <div class="card-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Canvas API</span>
+              <span class="tag">Systems Design</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 3 -->
+        <article class="project-card reveal-up" data-project="3">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-header">
+              <span class="card-icon">🔌</span>
+              <div class="card-links">
+                <a href="#" class="card-link" title="GitHub" aria-label="View source on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+                <a href="#" class="card-link" title="Live Demo" aria-label="View live demo">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="card-title">IoT Sensor Network</h3>
+            <p class="card-desc">An embedded sensor network simulator with data aggregation, fault detection, and a web-based control interface for remote monitoring.</p>
+            <div class="card-tags">
+              <span class="tag">C++</span>
+              <span class="tag">IoT</span>
+              <span class="tag">Embedded Systems</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 4 -->
+        <article class="project-card reveal-up" data-project="4">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-header">
+              <span class="card-icon">🧠</span>
+              <div class="card-links">
+                <a href="#" class="card-link" title="GitHub" aria-label="View source on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+                <a href="#" class="card-link" title="Live Demo" aria-label="View live demo">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="card-title">Neural Net Visualizer</h3>
+            <p class="card-desc">Interactive visualization of neural network forward/backward propagation. Adjust weights, biases, and activation functions in real time.</p>
+            <div class="card-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Visualization</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJECT MODAL
+       ═══════════════════════════════════════════ -->
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-content glass-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <span class="modal-icon" id="modal-icon"></span>
+        <h3 class="modal-title" id="modal-title"></h3>
+      </div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-actions">
+        <a href="#" class="btn btn-primary" id="modal-github">View Source</a>
+        <a href="#" class="btn btn-secondary" id="modal-demo">Live Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SYSTEM VISUALIZATION SECTION
+       Interactive node-based subsystem control panel
+       ═══════════════════════════════════════════ -->
+  <section id="system-viz" class="section system-viz">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag mono">// 03. systems</span>
+        <h2 class="section-title">System <span class="highlight">Control Panel</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Click on subsystem nodes to activate them. Watch the network come alive.</p>
+      </div>
+
+      <div class="viz-wrapper reveal-up">
+        <canvas id="system-canvas" aria-label="Interactive system visualization"></canvas>
+        <div class="viz-hud">
+          <div class="hud-item">
+            <span class="mono hud-label">Active Nodes</span>
+            <span class="mono hud-value" id="hud-active">0 / 0</span>
+          </div>
+          <div class="hud-item">
+            <span class="mono hud-label">Connections</span>
+            <span class="mono hud-value" id="hud-connections">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="mono hud-label">System Load</span>
+            <span class="mono hud-value" id="hud-load">0%</span>
+          </div>
+          <button class="btn btn-primary btn-sm" id="activate-all">Activate All</button>
+          <button class="btn btn-secondary btn-sm" id="reset-all">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TIMELINE — Experience & Education
+       ═══════════════════════════════════════════ -->
+  <section id="timeline" class="section timeline-section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag mono">// 04. journey</span>
+        <h2 class="section-title">System <span class="highlight">Log</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal-left" data-year="2024 – Present">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date mono">2024 – Present</span>
+            <h3 class="timeline-title">Systems Engineering — Year 2</h3>
+            <p class="timeline-place">University</p>
+            <p class="timeline-desc">
+              Diving deep into control theory, signals & systems, and software architecture.
+              Building projects that bridge hardware and software.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-right" data-year="2023 – 2024">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date mono">2023 – 2024</span>
+            <h3 class="timeline-title">Systems Engineering — Year 1</h3>
+            <p class="timeline-place">University</p>
+            <p class="timeline-desc">
+              Foundations in mathematics, physics, programming, and engineering principles.
+              First exposure to systems thinking methodology.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-left" data-year="2023">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date mono">Summer 2023</span>
+            <h3 class="timeline-title">Web Development Intern</h3>
+            <p class="timeline-place">Tech Startup</p>
+            <p class="timeline-desc">
+              Built responsive web interfaces, implemented REST APIs,
+              and collaborated in an agile development team.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-right" data-year="2022">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date mono">2022</span>
+            <h3 class="timeline-title">Self-Taught Programming</h3>
+            <p class="timeline-place">Online Courses & Projects</p>
+            <p class="timeline-desc">
+              Began learning HTML, CSS, JavaScript, and Python through
+              online platforms. Built first personal projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-left" data-year="2021">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card glass-card">
+            <span class="timeline-date mono">2021</span>
+            <h3 class="timeline-title">Hackathon Winner</h3>
+            <p class="timeline-place">Regional Tech Competition</p>
+            <p class="timeline-desc">
+              Won first place for designing an automated scheduling system.
+              First taste of competitive engineering.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT SECTION
+       ═══════════════════════════════════════════ -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag mono">// 05. contact</span>
+        <h2 class="section-title">Open a <span class="highlight">Channel</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="glass-card">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title mono">contact.sys</span>
+            </div>
+            <div class="terminal-body">
+              <p class="mono terminal-line"><span class="prompt">$</span> echo "Let's build something together."</p>
+              <p>I'm always open to interesting conversations, collaboration opportunities, and new projects.</p>
+              <p>Feel free to reach out through the form or any of the channels below.</p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="GitHub">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:anton@example.com" class="social-link" aria-label="Email">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Email</span>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter / X">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+              <span>Twitter / X</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form glass-card reveal-right" id="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name" class="form-label mono">Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required autocomplete="name" />
+            <span class="form-highlight"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label mono">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required autocomplete="email" />
+            <span class="form-highlight"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label mono">Message</label>
+            <textarea id="message" name="message" class="form-input form-textarea" placeholder="What's on your mind?" rows="5" required></textarea>
+            <span class="form-highlight"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <span class="btn-text">Send Transmission</span>
+            <span class="btn-icon">→</span>
+          </button>
+
+          <div class="form-status" id="form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="mono">Designed &amp; Built by <span class="highlight">Anton</span></p>
+      <p class="mono footer-note">&copy; 2026 — All systems operational.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       SCRIPTS — loaded in order of dependency
+       ═══════════════════════════════════════════ -->
+  <script src="js/canvas.js"></script>
+  <script src="js/system-viz.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
