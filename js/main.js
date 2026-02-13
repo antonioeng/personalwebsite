@@ -155,11 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.Animations) {
     // Typing effect — cycles through roles/descriptors
     Animations.initTypingEffect('typed-text', [
-      'Systems Thinker.',
-      'Problem Solver.',
-      'Web Developer.',
-      'Future Engineer.',
-      'Code Architect.',
+      'Pensador Sistémico.',
+      'Solucionador de Problemas.',
+      'Desarrollador Web.',
+      'Futuro Ingeniero.',
+      'Arquitecto de Código.',
     ]);
 
     // Skill bars fill on scroll
@@ -182,33 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectDetails = {
     1: {
       icon: '⚙️',
-      title: 'Smart Campus Navigator',
-      desc: 'A pathfinding system using Dijkstra\'s algorithm to find optimal routes across campus buildings. The application visualizes graph traversal in real-time, showing how the algorithm explores nodes and edges before finding the shortest path. Built with Python and Matplotlib for visualization, it demonstrates understanding of graph theory and algorithm optimization.',
-      tags: ['Python', 'Algorithms', 'Graph Theory', 'Matplotlib'],
+      title: 'Navegador Inteligente de Campus',
+      desc: 'Un sistema de búsqueda de rutas usando el algoritmo de Dijkstra para encontrar rutas óptimas entre edificios del campus. La aplicación visualiza el recorrido del grafo en tiempo real, mostrando cómo el algoritmo explora nodos y aristas antes de encontrar el camino más corto. Construido con Python y Matplotlib para la visualización, demuestra comprensión de teoría de grafos y optimización de algoritmos.',
+      tags: ['Python', 'Algoritmos', 'Teoría de Grafos', 'Matplotlib'],
       github: '#',
       demo: '#',
     },
     2: {
       icon: '📊',
-      title: 'Data Pipeline Monitor',
-      desc: 'A real-time dashboard for monitoring data flow through a multi-stage processing pipeline. Features include throughput analytics, bottleneck detection, and interactive flow visualization built entirely with the Canvas API. The system simulates data packets moving through processing stages and highlights congestion points.',
-      tags: ['JavaScript', 'Canvas API', 'Systems Design', 'Real-time'],
+      title: 'Monitor de Pipeline de Datos',
+      desc: 'Un dashboard en tiempo real para monitorear el flujo de datos a través de un pipeline de procesamiento multi-etapa. Incluye analíticas de rendimiento, detección de cuellos de botella y visualización interactiva de flujo construida completamente con la API Canvas. El sistema simula paquetes de datos moviéndose a través de etapas de procesamiento y resalta puntos de congestión.',
+      tags: ['JavaScript', 'API Canvas', 'Diseño de Sistemas', 'Tiempo Real'],
       github: '#',
       demo: '#',
     },
     3: {
       icon: '🔌',
-      title: 'IoT Sensor Network',
-      desc: 'An embedded sensor network simulator that models data aggregation from distributed IoT sensors. Features include automatic fault detection, data deduplication, and a web-based control interface for remote monitoring and configuration. Demonstrates understanding of distributed systems and embedded programming.',
-      tags: ['C++', 'IoT', 'Embedded Systems', 'WebSockets'],
+      title: 'Red de Sensores IoT',
+      desc: 'Un simulador de red de sensores embebidos que modela la agregación de datos de sensores IoT distribuidos. Incluye detección automática de fallas, deduplicación de datos y una interfaz de control web para monitoreo y configuración remota. Demuestra comprensión de sistemas distribuidos y programación embebida.',
+      tags: ['C++', 'IoT', 'Sistemas Embebidos', 'WebSockets'],
       github: '#',
       demo: '#',
     },
     4: {
       icon: '🧠',
-      title: 'Neural Net Visualizer',
-      desc: 'An interactive visualization tool for understanding neural network forward and backward propagation. Users can adjust weights, biases, and activation functions in real time and watch how changes propagate through the network layers. A powerful educational tool for understanding the fundamentals of machine learning.',
-      tags: ['JavaScript', 'Machine Learning', 'Visualization', 'Education'],
+      title: 'Visualizador de Redes Neuronales',
+      desc: 'Una herramienta de visualización interactiva para entender la propagación hacia adelante y hacia atrás en redes neuronales. Los usuarios pueden ajustar pesos, sesgos y funciones de activación en tiempo real y observar cómo los cambios se propagan a través de las capas de la red. Una poderosa herramienta educativa para entender los fundamentos del aprendizaje automático.',
+      tags: ['JavaScript', 'Machine Learning', 'Visualización', 'Educación'],
       github: '#',
       demo: '#',
     },
@@ -269,19 +269,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Basic validation
       if (!name || !email || !message) {
-        showFormStatus('Please fill in all fields.', 'error');
+        showFormStatus('Por favor, completa todos los campos.', 'error');
         return;
       }
 
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showFormStatus('Please enter a valid email address.', 'error');
+        showFormStatus('Por favor, ingresa un correo electrónico válido.', 'error');
         return;
       }
 
       // Simulate sending (frontend only — no backend)
-      showFormStatus('Transmitting…', '');
+      showFormStatus('Transmitiendo…', '');
       setTimeout(() => {
-        showFormStatus('✓ Message received! I\'ll get back to you soon.', 'success');
+        showFormStatus('✓ ¡Mensaje recibido! Te responderé pronto.', 'success');
         contactForm.reset();
       }, 1500);
     });

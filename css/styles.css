@@ -26,43 +26,43 @@
 
 /* ─── 1. CUSTOM PROPERTIES ───────────────────────────────── */
 :root {
-  /* Color palette — dark engineering aesthetic */
-  --bg-primary:    #0a0e17;
-  --bg-secondary:  #0f1420;
-  --bg-tertiary:   #141a28;
-  --bg-card:       rgba(15, 20, 35, 0.7);
-  --bg-glass:      rgba(15, 20, 35, 0.5);
+  /* Color palette — hacker dark aesthetic */
+  --bg-primary:    #050a05;
+  --bg-secondary:  #0a100a;
+  --bg-tertiary:   #0f160f;
+  --bg-card:       rgba(5, 15, 5, 0.7);
+  --bg-glass:      rgba(5, 15, 5, 0.5);
 
   --text-primary:  #e2e8f0;
   --text-secondary:#94a3b8;
   --text-muted:    #64748b;
 
-  /* Accent — electric cyan/blue */
-  --accent:        #00d4ff;
-  --accent-rgb:    0, 212, 255;
-  --accent-dim:    #0099cc;
-  --accent-glow:   rgba(0, 212, 255, 0.15);
-  --accent-glow-strong: rgba(0, 212, 255, 0.3);
+  /* Accent — hacker green */
+  --accent:        #00ff41;
+  --accent-rgb:    0, 255, 65;
+  --accent-dim:    #00cc33;
+  --accent-glow:   rgba(0, 255, 65, 0.15);
+  --accent-glow-strong: rgba(0, 255, 65, 0.3);
 
   /* Supplementary accents */
-  --green:         #00ff88;
-  --green-rgb:     0, 255, 136;
+  --green:         #00ff41;
+  --green-rgb:     0, 255, 65;
   --red:           #ff4757;
   --yellow:        #ffd43b;
 
   /* Borders */
   --border:        rgba(148, 163, 184, 0.1);
-  --border-accent: rgba(0, 212, 255, 0.25);
+  --border-accent: rgba(0, 255, 65, 0.25);
 
   /* Shadows */
   --shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg:     0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow:   0 0 20px rgba(0, 212, 255, 0.15);
+  --shadow-glow:   0 0 20px rgba(0, 255, 65, 0.15);
 
   /* Glassmorphism */
-  --glass-bg:      rgba(15, 20, 35, 0.6);
-  --glass-border:  rgba(148, 163, 184, 0.08);
+  --glass-bg:      rgba(5, 15, 5, 0.6);
+  --glass-border:  rgba(0, 255, 65, 0.06);
   --glass-blur:    16px;
 
   /* Spacing */
@@ -246,7 +246,7 @@ strong {
 }
 
 .navbar.scrolled {
-  background: rgba(10, 14, 23, 0.9);
+  background: rgba(5, 10, 5, 0.92);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   box-shadow: 0 1px 0 var(--border);
@@ -785,7 +785,7 @@ strong {
   align-items: center;
   gap: var(--space-xl);
   padding: var(--space-md) var(--space-xl);
-  background: rgba(10, 14, 23, 0.85);
+  background: rgba(5, 10, 5, 0.85);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--border);
   flex-wrap: wrap;
@@ -1131,7 +1131,7 @@ body.cursor-hover #cursor-ring {
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--green));
+  background: linear-gradient(90deg, #00cc33, var(--accent));
   z-index: var(--z-progress);
   transition: width 50ms linear;
 }
@@ -1192,7 +1192,7 @@ body.cursor-hover #cursor-ring {
     right: 0;
     width: 280px;
     height: calc(100vh - var(--nav-height));
-    background: rgba(10, 14, 23, 0.97);
+    background: rgba(5, 10, 5, 0.97);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: var(--space-2xl);

@@ -28,13 +28,13 @@ class HeroCanvas {
     this.animId = null;
     this.time = 0;
 
-    // Design tokens (matches CSS vars)
+    // Design tokens (matches CSS vars — hacker green)
     this.colors = {
-      grid:       'rgba(0, 212, 255, 0.04)',
-      gridStrong: 'rgba(0, 212, 255, 0.08)',
-      particle:   'rgba(0, 212, 255, 0.6)',
-      line:       'rgba(0, 212, 255, 0.12)',
-      scanLine:   'rgba(0, 212, 255, 0.03)',
+      grid:       'rgba(0, 255, 65, 0.04)',
+      gridStrong: 'rgba(0, 255, 65, 0.08)',
+      particle:   'rgba(0, 255, 65, 0.6)',
+      line:       'rgba(0, 255, 65, 0.12)',
+      scanLine:   'rgba(0, 255, 65, 0.03)',
     };
 
     // Config
@@ -207,7 +207,7 @@ class HeroCanvas {
 
         if (dist < maxDist) {
           const alpha = (1 - dist / maxDist) * 0.15;
-          ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+          ctx.strokeStyle = `rgba(0, 255, 65, ${alpha})`;
           ctx.lineWidth = 0.6;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
@@ -226,13 +226,13 @@ class HeroCanvas {
       // Glow
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 212, 255, ${p.opacity * 0.1})`;
+      ctx.fillStyle = `rgba(0, 255, 65, ${p.opacity * 0.1})`;
       ctx.fill();
 
       // Core dot
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 212, 255, ${p.opacity})`;
+      ctx.fillStyle = `rgba(0, 255, 65, ${p.opacity})`;
       ctx.fill();
     }
   }

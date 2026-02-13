@@ -109,12 +109,12 @@ const Animations = (() => {
 
     // Node definitions with relative positions (% of container)
     const diagramNodes = [
-      { id: 'html',    label: 'HTML/CSS',          x: 18, y: 30 },
-      { id: 'js',      label: 'JavaScript',        x: 50, y: 15 },
-      { id: 'python',  label: 'Python',            x: 82, y: 30 },
-      { id: 'algo',    label: 'Algorithms',        x: 30, y: 70 },
-      { id: 'systems', label: 'Systems\nThinking', x: 50, y: 50 },
-      { id: 'solve',   label: 'Problem\nSolving',  x: 70, y: 70 },
+      { id: 'html',    label: 'HTML/CSS',              x: 18, y: 30 },
+      { id: 'js',      label: 'JavaScript',            x: 50, y: 15 },
+      { id: 'python',  label: 'Python',                x: 82, y: 30 },
+      { id: 'algo',    label: 'Algoritmos',            x: 30, y: 70 },
+      { id: 'systems', label: 'Pensamiento\nSistémico', x: 50, y: 50 },
+      { id: 'solve',   label: 'Resolución de\nProblemas', x: 70, y: 70 },
     ];
 
     const diagramEdges = [
@@ -161,13 +161,13 @@ const Animations = (() => {
 
       // Hover glow
       node.addEventListener('mouseenter', () => {
-        node.style.borderColor = 'rgba(0, 212, 255, 0.6)';
-        node.style.background = 'rgba(0, 212, 255, 0.12)';
-        node.style.boxShadow = '0 0 15px rgba(0, 212, 255, 0.2)';
+        node.style.borderColor = 'rgba(0, 255, 65, 0.6)';
+        node.style.background = 'rgba(0, 255, 65, 0.12)';
+        node.style.boxShadow = '0 0 15px rgba(0, 255, 65, 0.2)';
       });
       node.addEventListener('mouseleave', () => {
-        node.style.borderColor = 'rgba(0, 212, 255, 0.2)';
-        node.style.background = 'rgba(0, 212, 255, 0.06)';
+        node.style.borderColor = 'rgba(0, 255, 65, 0.2)';
+        node.style.background = 'rgba(0, 255, 65, 0.06)';
         node.style.boxShadow = 'none';
       });
 
@@ -198,7 +198,7 @@ const Animations = (() => {
         line.setAttribute('y1', y1);
         line.setAttribute('x2', x2);
         line.setAttribute('y2', y2);
-        line.setAttribute('stroke', 'rgba(0, 212, 255, 0.15)');
+        line.setAttribute('stroke', 'rgba(0, 255, 65, 0.15)');
         line.setAttribute('stroke-width', '1');
         svg.appendChild(line);
       });

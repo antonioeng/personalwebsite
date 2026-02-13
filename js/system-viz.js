@@ -34,18 +34,18 @@ class SystemViz {
 
     // Define subsystem nodes
     this.nodesData = [
-      { id: 'core',      label: 'Core System',      group: 'core' },
-      { id: 'frontend',  label: 'Frontend',          group: 'software' },
-      { id: 'backend',   label: 'Backend',           group: 'software' },
-      { id: 'database',  label: 'Database',          group: 'software' },
-      { id: 'network',   label: 'Network Layer',     group: 'infra' },
-      { id: 'security',  label: 'Security',          group: 'infra' },
-      { id: 'ml',        label: 'ML Pipeline',       group: 'data' },
-      { id: 'analytics', label: 'Analytics',         group: 'data' },
-      { id: 'iot',       label: 'IoT Sensors',       group: 'hardware' },
-      { id: 'control',   label: 'Control Unit',      group: 'hardware' },
-      { id: 'monitoring',label: 'Monitoring',        group: 'ops' },
-      { id: 'deploy',    label: 'Deployment',        group: 'ops' },
+      { id: 'core',      label: 'Sistema Central',   group: 'core' },
+      { id: 'frontend',  label: 'Frontend',           group: 'software' },
+      { id: 'backend',   label: 'Backend',            group: 'software' },
+      { id: 'database',  label: 'Base de Datos',      group: 'software' },
+      { id: 'network',   label: 'Capa de Red',        group: 'infra' },
+      { id: 'security',  label: 'Seguridad',          group: 'infra' },
+      { id: 'ml',        label: 'Pipeline ML',        group: 'data' },
+      { id: 'analytics', label: 'Análisis',            group: 'data' },
+      { id: 'iot',       label: 'Sensores IoT',       group: 'hardware' },
+      { id: 'control',   label: 'Unidad Control',     group: 'hardware' },
+      { id: 'monitoring',label: 'Monitoreo',          group: 'ops' },
+      { id: 'deploy',    label: 'Despliegue',         group: 'ops' },
     ];
 
     // Define connections between subsystems
@@ -62,12 +62,12 @@ class SystemViz {
 
     // Group colors for visual distinction
     this.groupColors = {
-      core:     { r: 0,   g: 212, b: 255 },  // cyan
-      software: { r: 100, g: 150, b: 255 },  // blue
-      infra:    { r: 0,   g: 255, b: 136 },  // green
-      data:     { r: 255, g: 200, b: 0   },  // gold
-      hardware: { r: 255, g: 100, b: 100 },  // coral
-      ops:      { r: 180, g: 130, b: 255 },  // purple
+      core:     { r: 0,   g: 255, b: 65  },  // matrix green
+      software: { r: 50,  g: 220, b: 100 },  // soft green
+      infra:    { r: 0,   g: 200, b: 80  },  // emerald
+      data:     { r: 100, g: 255, b: 50  },  // lime
+      hardware: { r: 0,   g: 180, b: 60  },  // dark green
+      ops:      { r: 80,  g: 255, b: 120 },  // mint
     };
 
     this.nodes = [];
@@ -269,12 +269,12 @@ class SystemViz {
 
       // Determine line style based on activation
       if (bothActive) {
-        ctx.strokeStyle = `rgba(0, 212, 255, 0.5)`;
+        ctx.strokeStyle = `rgba(0, 255, 65, 0.5)`;
         ctx.lineWidth = 2;
-        ctx.shadowColor = 'rgba(0, 212, 255, 0.3)';
+        ctx.shadowColor = 'rgba(0, 255, 65, 0.3)';
         ctx.shadowBlur = 8;
       } else if (eitherActive) {
-        ctx.strokeStyle = `rgba(0, 212, 255, 0.15)`;
+        ctx.strokeStyle = `rgba(0, 255, 65, 0.15)`;
         ctx.lineWidth = 1;
         ctx.shadowBlur = 0;
       } else {
@@ -297,7 +297,7 @@ class SystemViz {
 
         ctx.beginPath();
         ctx.arc(px, py, 3, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
+        ctx.fillStyle = 'rgba(0, 255, 65, 0.8)';
         ctx.fill();
       }
     }
@@ -361,7 +361,7 @@ class SystemViz {
       ctx.beginPath();
       ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
       ctx.fillStyle = node.active
-        ? 'rgba(0, 255, 136, 0.9)'
+        ? 'rgba(0, 255, 65, 0.9)'
         : 'rgba(100, 116, 139, 0.5)';
       ctx.fill();
     }
